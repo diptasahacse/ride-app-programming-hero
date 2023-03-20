@@ -58,7 +58,9 @@ const MyNavBar = () => {
                 </li>
               </ul>
             </div>
-            <a className="font-bold text-primary text-xl">Easy Ride</a>
+            <Link className="font-bold text-primary text-xl" to="/">
+              Easy Ride
+            </Link>
           </div>
           <div className="navbar-end hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
