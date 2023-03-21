@@ -49,7 +49,54 @@ const RiderReg = () => {
   const rideFormHandler = (event) => {
     event.preventDefault();
 
-    console.log(state);
+    const drivingLicenseImg = state.drivingLicensePicture;
+    const profilePic = state.profilePicture;
+    const nidPic = state.nidPicture;
+
+    // Form Data
+    const drivingLicenseImgformData = new FormData();
+    drivingLicenseImgformData.append("image", drivingLicenseImg);
+
+    const profilePicformData = new FormData();
+    profilePicformData.append("image", profilePic);
+
+    const nidPicformData = new FormData();
+    nidPicformData.append("image", nidPic);
+
+    const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMGBB_API}`;
+    console.log(url);
+    fetch(url, {
+      method: "POST",
+      body: drivingLicenseImgformData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.data.url);
+        }
+      });
+
+    fetch(url, {
+      method: "POST",
+      body: profilePicformData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.data.url);
+        }
+      });
+
+    fetch(url, {
+      method: "POST",
+      body: nidPicformData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.data.url);
+        }
+      });
   };
 
   return (
