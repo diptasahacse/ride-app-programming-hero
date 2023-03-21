@@ -3,14 +3,12 @@ import React, { useReducer } from "react";
 const initialState = {
   fullName: "",
   email: "",
-  password: "",
-  cpassword: "",
-  age: 0,
+  age: "0",
   address: "",
   phone: "",
-  drivingLicense: "",
+  drivingLicensePicture: "",
   area: "",
-  nid: "",
+  nidPicture: "",
   profilePicture: "",
   vehicleType: "car",
   vehicleInfo: {
@@ -20,10 +18,11 @@ const initialState = {
   },
   role: "rider",
   blockedStatus: false,
+  password: "",
+  cpassword: "",
 };
 const RiderReg = () => {
   const rideReducer = (state, action) => {
-    console.log(action);
     switch (action.type) {
       case "INPUT":
         return {
@@ -38,17 +37,24 @@ const RiderReg = () => {
             [action.payload.name]: action.payload.value,
           },
         };
+      case "IMAGE":
+        return { ...state, [action.payload.name]: action.payload.value };
+
       default:
         return state;
     }
   };
 
   const [state, dispatch] = useReducer(rideReducer, initialState);
-  console.log(state);
+  const rideFormHandler = (event) => {
+    event.preventDefault();
+
+    console.log(state);
+  };
 
   return (
     <div>
-      <form>
+      <form onSubmit={rideFormHandler}>
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             <div className="form-control">
@@ -174,19 +180,19 @@ const RiderReg = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Driving License</span>
+                <span className="label-text">Driving License Picture</span>
               </label>
               <input
-                type="tel"
+                type="file"
                 placeholder="Driving License"
                 className="input input-bordered"
                 onChange={(e) =>
                   dispatch({
-                    type: "INPUT",
-                    payload: { name: e.target.name, value: e.target.value },
+                    type: "IMAGE",
+                    payload: { name: e.target.name, value: e.target.files[0] },
                   })
                 }
-                name="drivingLicense"
+                name="drivingLicensePicture"
               />
             </div>
             <div className="form-control">
@@ -300,17 +306,37 @@ const RiderReg = () => {
               <label className="label">
                 <span className="label-text">Profile Pictute</span>
               </label>
-              <input type="file" className="input input-bordered" />
+              <input
+                type="file"
+                onChange={(e) =>
+                  dispatch({
+                    type: "IMAGE",
+                    payload: { name: e.target.name, value: e.target.files[0] },
+                  })
+                }
+                name="profilePicture"
+                className="input input-bordered"
+              />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">NID Pictute</span>
+                <span className="label-text">NID Picture</span>
               </label>
-              <input type="file" className="input input-bordered" />
+              <input
+                type="file"
+                name="nidPicture"
+                onChange={(e) =>
+                  dispatch({
+                    type: "IMAGE",
+                    payload: { name: e.target.name, value: e.target.files[0] },
+                  })
+                }
+                className="input input-bordered"
+              />
             </div>
           </div>
           <div className="form-control mt-5">
-            <button className="btn btn-primary">Register</button>
+            <input className="btn btn-primary" type="submit" value="Register" />
           </div>
         </div>
       </form>
