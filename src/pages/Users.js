@@ -6,9 +6,35 @@ const Users = () => {
       <div>
         <div className="card bg-neutral">
           <div className="card-body">
-            <div className="overflow-x-auto w-full">
+            <div className="mb-3">
+              <div className="flex justify-between items-center">
+                <div className="form-control">
+                  <input
+                    type="text"
+                    placeholder="Search here by name, email or phone"
+                    className="input input-bordered input-md w-full"
+                  />
+                </div>
+                <div className="form-control">
+                  <div className="flex gap-3 items-center">
+                    <span>Age:</span>
+                    <div className="flex gap-2">
+                      <label className="flex gap-1">
+                        <input type="checkbox" className="checkbox" />
+                        <span>18-25</span>
+                      </label>
+                      <label className="flex gap-1">
+                        <input type="checkbox" className="checkbox" />
+                        26-30
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="overflow-x-auto">
               <table className="table w-full">
-                {/* head */}
+                {/* head*/}
                 <thead>
                   <tr>
                     <th>
@@ -17,9 +43,10 @@ const Users = () => {
                       </label>
                     </th>
                     <th>Name</th>
-                    <th>Role</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Age</th>
                     <th>Block Status</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -35,70 +62,27 @@ const Users = () => {
                         <div className="avatar">
                           <div className="mask mask-squircle w-12 h-12">
                             <img
-                              src="https://www.jobstreet.co.id/en/cms/employer/wp-content/uploads/sites/20/2019/10/cheerful-thankful-young-woman-honored-embarrassed_1262-14837.jpg"
+                              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                               alt="Avatar Tailwind CSS Component"
                             />
                           </div>
                         </div>
                         <div>
-                          <div className="font-bold">Hart Hagerty</div>
-                          <div className="text-sm opacity-50">
-                            United States
-                          </div>
+                          <div className="font-bold">Dipta Saha</div>
                         </div>
                       </div>
                     </td>
+                    <td>01613146412</td>
+                    <td>dipta@gmail.com</td>
+                    <td>25</td>
                     <td>
-                      Zemlak, Daniel and Leannon
-                      <br />
-                      <span className="badge badge-ghost badge-sm">
-                        Desktop Support Technician
-                      </span>
-                    </td>
-                    <td>Purple</td>
-                    <th>
-                      <button className="btn btn-ghost btn-xs">details</button>
-                    </th>
-                  </tr>
-                  {/* row 2 */}
-                  <tr>
-                    <th>
-                      <label>
-                        <input type="checkbox" className="checkbox" />
-                      </label>
-                    </th>
-                    <td>
-                      <div className="flex items-center space-x-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle w-12 h-12">
-                            <img
-                              src="https://www.jobstreet.co.id/en/cms/employer/wp-content/uploads/sites/20/2019/10/cheerful-thankful-young-woman-honored-embarrassed_1262-14837.jpg"
-                              alt="Avatar Tailwind CSS Component"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="font-bold">Brice Swyre</div>
-                          <div className="text-sm opacity-50">China</div>
-                        </div>
+                      <div className="flex justify-center">
+                      <div className="w-3 h-3 rounded-full bg-success"></div>
                       </div>
+                     
                     </td>
-                    <td>
-                      Carroll Group
-                      <br />
-                      <span className="badge badge-ghost badge-sm">
-                        Tax Accountant
-                      </span>
-                    </td>
-                    <td>Red</td>
-                    <th>
-                      <button className="btn btn-ghost btn-xs">details</button>
-                    </th>
                   </tr>
-                  
-                  
                 </tbody>
-                
               </table>
             </div>
           </div>
